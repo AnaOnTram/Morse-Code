@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, 
+initial-scale=1.0">
+    <title>Text to Morse Code Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        textarea {
+            width: 300px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Morse Code Converter</h1>
+    <textarea id="textInput" placeholder="Enter text here"></textarea>
+    <button onclick="convertToMorse()">Convert to Morse Code</button>
+    <p id="morseOutput"></p>
+
+    <script>
+        // Morse code dictionary
+        const morseCodeDict = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 
+            'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': 
+'.---', 
+            'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 
+            'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 
+
+            'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': 
+'-.--', 
+            'Z': '--..', 
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--', 
+'4': '....-', 
+            '5': '.....', '6': '-....', '7': '--...', '8': '---..', 
+'9': '----.', 
+            ' ': '/'
+        };
+
+        function convertToMorse() {
+            const textInput = 
+document.getElementById('textInput').value;
+            let morseOutput = '';
+            for (let char of textInput.toUpperCase()) {
+                if (morseCodeDict[char]) {
+                    morseOutput += morseCodeDict[char] + ' ';
+                } else {
+                    morseOutput += '? '; // Handle unknown characters
+                }
+            }
+            document.getElementById('morseOutput').innerText = 
+morseOutput.trim();
+        }
+    </script>
+</body>
+</html>
